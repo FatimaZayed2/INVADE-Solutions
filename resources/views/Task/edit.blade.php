@@ -20,7 +20,7 @@
 				<!-- row -->
 				<div class="row">
                     <div class="container">
-                        <h1 class="text-center mb-4">create new task</h1>
+                        <h1 class="text-center mb-4">Edit task</h1>
                         <form   id="create-task-form" class="bg-light p-4 rounded shadow">
                             @csrf
                             <div class="form-group">
