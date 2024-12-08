@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\Api\TaskapiController;
 
 
 /*
@@ -19,6 +20,22 @@ use App\Http\Controllers\TaskController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+
+
+//////////// اذا اعتمدت على كنترولر خاص ب Api الموجود في App\Http\Controllers\Api\TaskapiController///////////
+Route::match(['get', 'post'], 'tasks', TaskapiController::class);
+Route::match(['put', 'delete'], 'tasks/{id}', TaskapiController::class);
+Route::patch('tasks/{id}/restore', [TaskapiController::class, 'restore']);
+// إذا اردت  function Retrieve a list of tasks Only////////////////
+Route::get('tasks', [TaskapiController::class, 'index']);
+
+
+
+
+
+////////////// اذا اعتمد على كنترولر واحد TaskController////////
 
 Route::get('/tasks', [TaskController::class, 'index'])->name('tasks.index');
 
